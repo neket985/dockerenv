@@ -1,0 +1,17 @@
+version: "3"
+services:
+  ch-server:
+    image: yandex/clickhouse-server
+    ports:
+      - "8123:8123"
+      - "9000:9000"
+      - "9009:9009"
+    ulimits:
+      nproc: 65535
+      nofile:
+        soft: 262144
+        hard: 262144
+  tabix:
+    image: spoonest/clickhouse-tabix-web-client
+    ports:
+      - "8124:80"
