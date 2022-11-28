@@ -1,0 +1,8 @@
+version: '3.7'
+services:
+  consul:
+    image: bitnami/consul:latest
+    ports:
+      - "8500:8500"
+    volumes:
+      - ./m12-dev-consul:/bitnami
