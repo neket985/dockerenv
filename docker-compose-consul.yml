@@ -5,4 +5,8 @@ services:
     ports:
       - "8500:8500"
     volumes:
-      - ./m12-dev-consul:/bitnami
+#      - ./consul/ckad-local:/bitnami
+#      - ./consul/m12-dev:/bitnami
+#      - ./consul/sopt-dev:/bitnami
+#      - ./consul/obscur-local:/bitnami
+      - ./consul/sso-local:/bitnami

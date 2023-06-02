@@ -2,13 +2,13 @@ version: '3.7'
 
 services:
   zookeeper:
-    image: bitnami/zookeeper:3.7.0
+    image: bitnami/zookeeper:3.8.1
     hostname: zookeeper
     environment:
       ALLOW_ANONYMOUS_LOGIN: 'yes'
 
   kafka:
-    image: bitnami/kafka:2.8.0
+    image: bitnami/kafka:3.4.0
     hostname: kafka
     links:
       - zookeeper
@@ -28,6 +28,9 @@ services:
       KAFKA_CFG_INTER_BROKER_LISTENER_NAME: CLIENT
       KAFKA_CFG_CREATE_TOPICS_ENABLE: 'yes'
 
+      KAFKA_HEAP_OPTS: -Xms1024m -Xmx2048m
+      KAFKA_CFG_SOCKET_REQUEST_MAX_BYTES: 531860000
+
 #      KAFKA_CFG_OFFSETS_TOPIC_REPLICATION_FACTOR: 1
       KAFKA_CFG_GROUP_INITIAL_REBALANCE_DELAY_MS: 0
 
@@ -45,3 +48,4 @@ services:
       - KAFKA_CLUSTERS_0_ZOOKEEPER=zookeeper:2181
     volumes:
       - '${JKS_CONTAINER:-./}:/opt/jks/'
+#  kafka-console-producer.sh --broker-list kafka:9092 --topic umd-test --producer-property max.request.size=144236402 < /bitnami/sample_oneline.json

@@ -10,3 +10,8 @@ services:
       RABBITMQ_DEFAULT_USER: 'user'
       RABBITMQ_DEFAULT_PASS: 'password'
       RABBITMQ_DEFAULT_VHOST: '/'
+      RABBITMQ_SERVER_ADDITIONAL_ERL_ARGS: '-rabbitmq_management load_definitions "/tmp/definitions.json"'
+    volumes:
+#      - ./rabbit/sopt:/tmp
+      - ./rabbit/gid:/tmp
+#      - ./rabbit/m12:/tmp

@@ -1,4 +1,5 @@
 .idea/*
 kafka_data/*
-*-consul/*
+consul/*
+rabbit/*
 .env
