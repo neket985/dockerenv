@@ -31,8 +31,10 @@ services:
       KAFKA_HEAP_OPTS: -Xms1024m -Xmx2048m
       KAFKA_CFG_SOCKET_REQUEST_MAX_BYTES: 531860000
 
-#      KAFKA_CFG_OFFSETS_TOPIC_REPLICATION_FACTOR: 1
+      KAFKA_CFG_OFFSETS_TOPIC_REPLICATION_FACTOR: 1
       KAFKA_CFG_GROUP_INITIAL_REBALANCE_DELAY_MS: 0
+      BITNAMI_DEBUG: true
+      KAFKA_ENABLE_KRAFT: false #todo почему kraft теперь всегда включен и что это?
 
   kafka-ui:
     image: provectuslabs/kafka-ui

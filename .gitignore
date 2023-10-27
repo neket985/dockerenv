@@ -2,4 +2,7 @@
 kafka_data/*
 consul/*
 rabbit/*
+debezium/*
+grafana-storage/*
+prometheus/*
 .env

@@ -1,0 +1,28 @@
+version: "3"
+services:
+  flink-jobmanager:
+    image: flink:latest
+    expose:
+      - "6123"
+    ports:
+      - "8081:8081"
+    command: jobmanager
+    environment:
+      - JOB_MANAGER_RPC_ADDRESS=flink-jobmanager
+
+  flink-taskmanager:
+    image: flink:latest
+    expose:
+      - "6121"
+      - "6122"
+    depends_on:
+      - flink-jobmanager
+    command: taskmanager
+    links:
+      - "flink-jobmanager:flink-jobmanager"
+    environment:
+      - JOB_MANAGER_RPC_ADDRESS=flink-jobmanager
+      - |
+        FLINK_PROPERTIES=
+        taskmanager.numberOfTaskSlots: 1
+        parallelism.default: 1

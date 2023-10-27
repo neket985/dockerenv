@@ -1,0 +1,13 @@
+ansible
+cryptography==38.0.4
+dnspython
+kubernetes
+kubernetes-validate
+jinja2
+netaddr
+pbr
+jmespath
+requests
+ruamel.yaml
+ruamel.yaml.clib
+MarkupSafe

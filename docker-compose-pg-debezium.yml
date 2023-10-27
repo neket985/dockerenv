@@ -1,0 +1,21 @@
+version: '3.7'
+services:
+  debezium:
+    image: debezium/server:2.3
+    ports:
+      - 8083:8080
+    volumes:
+      - ./debezium/conf:/debezium/conf
+      - ./debezium/data:/debezium/data
+
+  pg-debezium:
+    image: debezium/postgres:14-alpine
+    ports:
+      - 5432:5432
+    environment:
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: postgres
+    command:
+      - "postgres"
+      - "-c"
+      - "wal_level=logical"
